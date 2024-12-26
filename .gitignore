@@ -1,0 +1,90 @@
+# Flutter-related files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.buildlog/
+.build/
+pubspec.lock
+**/build/
+**/.DS_Store
+
+# Dart/Flutter compilation artifacts
+*.aab
+*.apk
+*.app
+*.ipa
+*.dill
+*.snapshot
+
+# Firebase-related files
+**/google-services.json
+**/GoogleService-Info.plist
+firebase_app_id_file.json
+
+# IDE-specific files
+.idea/
+*.iml
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Android-related files
+android/.gradle/
+android/local.properties
+android/app/debug
+android/app/profile
+android/app/release
+
+# iOS/macOS-related files
+ios/Pods/
+ios/Podfile.lock
+ios/Runner.xcworkspace/
+ios/Flutter/Flutter.framework
+ios/Flutter/*.xcconfig
+ios/GeneratedPluginRegistrant.*
+macos/Flutter/GeneratedPluginRegistrant.swift
+
+# Web-related files
+web/.dart_tool/
+web/outputs/
+
+# Tests and coverage
+**/coverage/
+*.lcov
+
+# Obfuscation and symbol files
+app.*.symbols
+app.*.map.json
+
+# Temporary and log files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.log
+*.gz
+**/logs/
+
+# Generated documentation
+**/doc/api/
+
+# System-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Flutter flavors (if using flavorizr or similar)
+lib/flavors/*.g.dart
+lib/firebase_options_*.dart
+pubspec.lock
+web/index.html
+pubspec.lock
+pubspec.lock
+windows/flutter/generated_plugins.cmake
+windows/flutter/generated_plugin_registrant.cc
+macos/Flutter/GeneratedPluginRegistrant.swift
+linux/flutter/generated_plugins.cmake
+linux/flutter/generated_plugin_registrant.cc
+.metadata
