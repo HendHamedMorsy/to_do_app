@@ -10,6 +10,16 @@ import 'package:to_do_app/features/tasks/screens/tasks_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  // Enable Crashlytics collection (you can set it to false for testing purposes)
+  await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+
+  // Ensure uncaught errors are sent to Crashlytics
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+
+  // Initialize Firebase Messaging
+  await FirebasePushNotificationService().init();
   runApp(const MyApp());
 }
 

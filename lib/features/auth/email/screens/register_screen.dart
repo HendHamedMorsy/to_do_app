@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:to_do_app/core/components/app_button.dart';
 import 'package:to_do_app/core/components/app_text_field.dart';
 import 'package:to_do_app/core/components/social_media_button.dart';
+import 'package:to_do_app/core/services/firebase_auth_services.dart';
 import 'package:to_do_app/core/utils/app_assets.dart';
 import 'package:to_do_app/core/utils/app_colors.dart';
 import 'package:to_do_app/features/auth/phone/screens/otp_verification_screen.dart';
@@ -15,10 +16,49 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+final FirebaseAuthService _authService = FirebaseAuthService();
+  final _formKey = GlobalKey<FormState>();
+
+
+  bool _isLoading = false;
+
   @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _showMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message), duration: Duration(seconds: 3)),
+    );
+  }
+
+  Future<void> _handleEmailLogin() async {
+    if (_formKey.currentState?.validate() ?? false) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      final result = await _authService.signInWithEmailAndPassword(
+        _emailController.text,
+        _passwordController.text,
+      );
+
+      setState(() {
+        _isLoading = false;
+      });
+
+      if (result.isSuccess) {
+        _showMessage('Logged in successfully as ${result.data?.email}');
+      } else {
+        _showMessage('Error: ${result.error}');
+      }
+    }
+  } @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(

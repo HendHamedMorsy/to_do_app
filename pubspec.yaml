@@ -16,6 +16,10 @@ dependencies:
   cupertino_icons: ^1.0.6
   pinput: ^5.0.0
   flutter_screenutil: ^5.9.3
+  firebase_core: ^2.16.0
+  firebase_messaging: ^14.5.0
+  firebase_remote_config: ^3.0.0
+  firebase_crashlytics: ^3.0.2
 
 dev_dependencies:
   flutter_test:
