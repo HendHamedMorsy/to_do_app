@@ -50,6 +50,8 @@ class FirebaseFirestoreService {
         'title': title,
         'subtitle': subtitle,
       });
+        String userToken = await getUserToken(taskId); // Fetch user token from Firestore or FCM
+  PushNotificationService().sendPushNotification(userToken, "Task Updated", "The task has been updated!");
       return Result.success(null);
     } catch (e) {
       return Result.failure('Error updating task: ${e.toString()}');
